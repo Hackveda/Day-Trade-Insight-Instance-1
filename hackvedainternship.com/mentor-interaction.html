@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentor Interaction - Hackveda Internship Social Network</title>
+  <style>
+    /* CSS Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: #4354A3;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .menu {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .menu li {
+      margin: 0 10px;
+    }
+
+    .menu li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .mentor-profile {
+      margin-bottom: 20px;
+      padding: 20px;
+      background-color: #f7f7f7;
+      border-radius: 4px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .mentor-profile img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .mentor-profile h2 {
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    .mentor-profile p {
+      color: #777;
+    }
+
+    .mentor-search {
+      margin-top: 20px;
+    }
+
+    .mentor-search input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 4px;
+    }
+
+    .mentor-list {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-gap: 20px;
+    }
+
+    .mentor-list-item {
+      background-color: #f7f7f7;
+      padding: 20px;
+      border-radius: 4px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .mentor-list-item img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .mentor-list-item h3 {
+      margin: 0;
+    }
+
+    .mentor-list-item p {
+      color: #777;
+      margin-top: 5px;
+    }
+
+    .footer {
+      background-color: #4354A3;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <img src="https://hackveda.in/i/HackvedaLogo1.png" height=50 alt="Hackveda Internship Social Network">
+    <nav>
+      <ul class="menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Internships</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Resources</a></li>
+        <li><a href="#">Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Mentor Interaction</h1>
+
+    <div class="mentor-search">
+      <input type="text" placeholder="Search mentors...">
+    </div>
+
+    <div class="mentor-list">
+      <div class="mentor-list-item">
+        <img width="96" height="96" src="https://img.icons8.com/color/96/user.png" alt="user"/>
+        <h3>John Doe</h3>
+        <p>Area of Expertise: Web Development</p>
+        <p>Background: 5+ years of experience in front-end development. Worked with various clients and projects.</p>
+      </div>
+
+      <div class="mentor-list-item">
+        <img width="96" height="96" src="https://img.icons8.com/color/96/user.png" alt="user"/>
+        <h3>Jane Smith</h3>
+        <p>Area of Expertise: Data Science</p>
+        <p>Background: Ph.D. in Data Science with a focus on machine learning and predictive modeling.</p>
+      </div>
+
+      <!-- Add more mentor profiles as needed -->
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2023 Hackveda Internship Social Network. All rights reserved.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,30 @@
+/* Add custom styles here */
+
+/* Styling for hero section */
+.hero-section {
+  background-color: #f8f8f8;
+  padding: 40px 0;
+}
+
+/* Styling for section headings */
+h2 {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* Add any additional custom styles for each section as needed */
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  /* Mobile styles */
+  h2 {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  /* Tablet styles */
+  h2 {
+    font-size: 26px;
+  }
+}

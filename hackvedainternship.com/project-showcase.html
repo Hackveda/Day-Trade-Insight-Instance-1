@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Showcase - Hackveda Internship Social Network</title>
+  <style>
+    /* CSS Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: #4354A3;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .menu {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .menu li {
+      margin: 0 10px;
+    }
+
+    .menu li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .project-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-gap: 20px;
+    }
+
+    .project {
+      padding: 20px;
+      border-radius: 4px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      background-color: #f7f7f7;
+    }
+
+    .project img {
+      max-width: 100%;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    .project h3 {
+      margin: 0;
+      margin-bottom: 10px;
+    }
+
+    .project p {
+      color: #777;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .project a {
+      background-color: #4354A3;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+    }
+
+    .project-details {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .project-details.active {
+      display: block;
+    }
+
+    .footer {
+      background-color: #4354A3;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <img src="https://hackveda.in/i/HackvedaLogo1.png" height=50 alt="Hackveda Internship Social Network">
+    <nav>
+      <ul class="menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Internships</a></li>
+        <li><a href="#">Knowledge Sharing</a></li>
+        <li><a href="#">Mentor Interaction</a></li>
+        <li><a href="#">Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Project Showcase</h1>
+
+    <div class="project-list">
+      <div class="project">
+        <img width="96" height="96" src="https://img.icons8.com/color/96/project.png" alt="project"/>
+        <h3>Project 1</h3>
+        <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Tags: Web Development, HTML, CSS, JavaScript</p>
+        <p>By: John Doe</p>
+        <a href="#" class="toggle-details">View Details</a>
+        <div class="project-details">
+          <h3>Project Details</h3>
+          <p>Project Objectives: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p>Technologies Used: HTML, CSS, JavaScript</p>
+          <a href="#">View Project</a>
+        </div>
+      </div>
+
+      <!-- Add more projects as needed -->
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2023 Hackveda Internship Social Network. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // JavaScript code for toggling project details
+    var toggleButtons = document.querySelectorAll('.toggle-details');
+    toggleButtons.forEach(function(button) {
+      button.addEventListener('click', function() {
+        var details = this.nextElementSibling;
+        details.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>

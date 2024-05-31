@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Direct Messaging - Hackveda Internship Social Network</title>
+  <style>
+    /* CSS Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: #4354A3;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .menu {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .menu li {
+      margin: 0 10px;
+    }
+
+    .menu li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .conversation {
+      margin-bottom: 20px;
+      padding: 10px;
+      background-color: #f7f7f7;
+      border-radius: 4px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .conversation .sender {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .conversation .timestamp {
+      font-size: 12px;
+      color: #999;
+      margin-bottom: 5px;
+    }
+
+    .conversation .message {
+      margin-bottom: 10px;
+    }
+
+    .compose-message {
+      margin-top: 20px;
+    }
+
+    .compose-message textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      resize: vertical;
+    }
+
+    .compose-message button {
+      padding: 8px 16px;
+      background-color: #4354A3;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .compose-message button:hover {
+      background-color: #2E3C78;
+    }
+
+    .footer {
+      background-color: #4354A3;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <img src="https://hackveda.in/i/HackvedaLogo1.png" height=50 alt="Hackveda Internship Social Network">
+    <nav>
+      <ul class="menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Internships</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Resources</a></li>
+        <li><a href="#">Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Direct Messaging</h1>
+
+    <!-- Conversation 1 -->
+    <div class="conversation">
+      <div class="sender">John Doe</div>
+      <div class="timestamp">July 3, 2023 10:32 AM</div>
+      <div class="message">Hey, how's your internship going?</div>
+    </div>
+
+    <!-- Conversation 2 -->
+    <div class="conversation">
+      <div class="sender">Jane Smith</div>
+      <div class="timestamp">July 3, 2023 11:05 AM</div>
+      <div class="message">It's going great! I'm learning a lot from my mentor. How about you?</div>
+    </div>
+
+    <!-- Add more conversations as needed -->
+
+    <div class="compose-message">
+      <textarea placeholder="Type your message..."></textarea>
+      <button>Send</button>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2023 Hackveda Internship Social Network. All rights reserved.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,632 @@
+<?php
+session_start();
+header('Content-Type: text/event-stream');
+header('Cache-Control: no-cache');
+include("db.php");
+
+if(isset($_SESSION["username"])){
+    $username = $_SESSION["username"];
+    //session_write_close();
+}else{
+    $username = "";
+}
+
+session_write_close();
+
+date_default_timezone_set("Asia/Calcutta");   //India time (GMT+5:30)
+#$date = date('d M Y H:i:s');
+$date = date('d M Y');
+$date = "24 July 2023";
+
+// Simulate real-time data updates
+while (true) {
+    // Replace this with your actual data retrieval logic
+    $data = array();
+    
+    #$sql = "Select * from stock where TradeDate like '%.$date.%'";
+    // Handle Recommendations 
+    
+    $sql = "select * from stock where `Hit` like '' ORDER BY ID";
+    
+    $show_count = 3;
+    $show_counter = 0;
+    
+    $result = $con1->query($sql);
+    
+    if($result->num_rows > 0){
+        while($row = $result->fetch_assoc()){
+            $symbol = $row["Symbol"];
+            $price = $row["Price"];
+            $target = $row["Target"];
+            $signal = $row["Signal"];
+            $recommend = $row["Recommend"];
+            $op_price = $row["OptionPrice"];
+            $op_target = $row["OptionTarget"];
+            $view = $row["View"];
+            $chart = $row["Chart"];
+            $hit = $row["Hit"];
+            
+            $close = $row["Close"];
+            $open = $row["Open"];
+            
+            $option_close = $row["OptionClose"];
+            $option_open = $row["OptionOpen"];
+            
+            $broker = $row["Broker"];
+            $broker_name = $row["BrokerName"];
+            
+            $postdate = $row["PostDate"];
+            $entryprice = $row["EntryPrice"];
+            
+            if($price < $open){
+                $color = "#df514c";
+            }else{
+                $color = "#4caf50";
+            }
+            
+            if($op_price < $option_open){
+                $op_color = "#df514c";
+            }else{
+                $op_color = "#4caf50";
+            }
+            
+            if(strcmp($signal, "Buy") == 0){
+                $signal_color = "#4caf50";
+            }else{
+                $signal_color = "#df514c";
+            }
+            
+            $target_color = "#00b0ff";
+            
+            if($show_counter <= $show_count){
+                
+                $data["free"] .= '<tp><td>'.$postdate.'</td><td style="color:'.$color.';">'.$symbol.'</td><td style="color:'.$color.';">'.$price.'</td><td style="color: '.$target_color.';">'.$target.'</td><td style="color: '.$signal_color.'">'.$signal.'</td><td>'.$recommend.'</td><td style="color: '.$op_color.';">'.$op_price.'</td><td>'.$entryprice.'</td><td style="color: '.$target_color.';">'.$op_target.'</td><td>'.$view.'</td>';
+              
+              if(strcmp($chart, '') != 0){
+                  
+              $data["free"] .= '<td><a class="btn btn-primary btn-sm" href="https://rzp.io/l/3XQXcZv">Upgrade</a></td>';
+              
+              }else{
+                $data["free"] .= '<td>No Data</td>';  
+              }
+              
+              /*
+              if(strcmp($hit, "True") == 0){
+                 $data["free"] .= '<td><img title="Target Hit" width="24" height="24" src="https://img.icons8.com/color/48/checked--v1.png" alt="checked--v1"/></td>'; 
+              }else if(strcmp($hit, "False") == 0){
+                 $data["free"] .= '<td><img title="Target Missed" width="24" height="24" src="https://img.icons8.com/external-others-agus-raharjo/64/external-incorrect-flat-website-ui-others-agus-raharjo.png" alt="external-incorrect-flat-website-ui-others-agus-raharjo"/></td>';
+              }else{
+                  $data["free"] .= '<td><img title="Target Pending" width="24" height="24" src="https://img.icons8.com/office/16/hourglass--v1.png" alt="hourglass--v1"/></td>';
+              }
+              
+              $data["free"] .= '<td>'.$broker_name.'</td>';
+              
+              */
+              
+              $data["free"] .= '</tr>';
+              
+              
+                
+            }else{
+                
+                // Uncomment Below to Show Upgrades on Free Access Section
+                
+                /*
+                $data["free"] .= '<tp><td style="color: '.$color.';">'.$symbol.'</td><td style="color: '.$color.';">'.$price.'</td><td><a class="btn btn-primary btn-sm" href="https://rzp.io/l/3XQXcZv">Upgrade</a></td><td style="color: '.$signal_color.';"><a class="btn btn-primary btn-sm" href="https://rzp.io/l/3XQXcZv">Upgrade</a></td><td><a class="btn btn-primary btn-sm" href="https://rzp.io/l/3XQXcZv">Upgrade</a></td><td style="color: '.$op_color.';">'.$op_price.'</td><td><a class="btn btn-primary btn-sm" href="https://rzp.io/l/3XQXcZv">Upgrade</a></td><td><a class="btn btn-primary btn-sm" href="https://rzp.io/l/3XQXcZv">Upgrade</a></td>';
+              
+              if(strcmp($chart, '') != 0){
+                  
+              $data["free"] .= '<td><a class="btn btn-primary btn-sm" href="https://rzp.io/l/3XQXcZv">Upgrade</a></td>';
+              
+              }else{
+                $data["free"] .= '<td>No Data</td>';  
+              }
+              
+              if(strcmp($hit, "True") == 0){
+                 $data["free"] .= '<td><img title="Target Hit" width="24" height="24" src="https://img.icons8.com/color/48/checked--v1.png" alt="checked--v1"/></td>'; 
+              }else if(strcmp($hit, "False") == 0){
+                 $data["free"] .= '<td><img title="Target Missed" width="24" height="24" src="https://img.icons8.com/external-others-agus-raharjo/64/external-incorrect-flat-website-ui-others-agus-raharjo.png" alt="external-incorrect-flat-website-ui-others-agus-raharjo"/></td>';
+              }else{
+                  $data["free"] .= '<td><img title="Target Pending" width="24" height="24" src="https://img.icons8.com/office/16/hourglass--v1.png" alt="hourglass--v1"/></td>';
+              }
+              
+              $data["free"] .= '<td>'.$broker_name.'</td></tr>';
+               */ 
+            }
+            
+            $show_counter .= 1;
+            
+            // Premium Users
+            
+            $data["premium"] .= '<tp><td>'.$postdate.'</td><td style="color:'.$color.';"><a target="_blank" title="'.$symbol.'" class="btn" data-symbol="'.$symbol.'" data-action="analysis" style="color:'.$color.';">'.$symbol.'</a></td><td style="color:'.$color.';">'.$price.'</td><td style="color: '.$target_color.';">'.$target.'</td><td style="color: '.$signal_color.'">'.$signal.'</td><td>'.$recommend.'</td><td style="color: '.$op_color.';">'.$op_price.'</td><td>'.$entryprice.'</td><td style="color: '.$target_color.';">'.$op_target.'</td><td>'.$view.'</td>';
+              
+              if(strcmp($chart, '') != 0){
+                  
+              //$data["premium"] .= '<td><center><a target="_blank" title="'.$symbol.'" class="btn" data-symbol="'.$symbol.'"><img width="24" height="24" src="https://img.icons8.com/color/48/candle-sticks.png" alt="candle-sticks"/></a></center></td>';
+              
+              }else{
+                $data["premium"] .= '<td>No Data</td>';  
+              }
+              
+              /*
+              if(strcmp($hit, "True") == 0){
+                 $data["premium"] .= '<td><img title="Target Hit" width="24" height="24" src="https://img.icons8.com/color/48/checked--v1.png" alt="checked--v1"/></td>'; 
+              }else if(strcmp($hit, "False") == 0){
+                 $data["premium"] .= '<td><img title="Target Missed" width="24" height="24" src="https://img.icons8.com/external-others-agus-raharjo/64/external-incorrect-flat-website-ui-others-agus-raharjo.png" alt="external-incorrect-flat-website-ui-others-agus-raharjo"/></td>';
+              }else{
+                  $data["premium"] .= '<td><img title="Target Pending" width="24" height="24" src="https://img.icons8.com/office/16/hourglass--v1.png" alt="hourglass--v1"/></td>';
+              }
+              */
+              
+              $data["premium"] .= '<td><button class="btn btn-primary btn-sm buy-btn" id="buy_'.$symbol.'" data-symbol="'.$symbol.'" data-recommend="'.$recommend.'" data-action="Buy">Buy</button></td><td><button class="btn btn-danger btn-sm sell-btn" id="sell_'.$symbol.'" data-symbol="'.$symbol.'" data-recommend="'.$recommend.'" data-action="Sell">Sell</button></td></tr>';
+              
+              $data["premium"] .= '</tr>';
+              
+              // Premium Monthly 
+              
+              $data["monthly"] .= '<tp><td>'.$postdate.'</td><td style="color:'.$color.';"><a target="_blank" title="'.$symbol.'" class="btn" data-symbol="'.$symbol.'" data-action="analysis" style="color:'.$color.';">'.$symbol.'</a></td><td style="color:'.$color.';">'.$price.'</td><td style="color: '.$target_color.';">'.$target.'</td><td style="color: '.$signal_color.'">'.$signal.'</td><td>'.$recommend.'</td><td style="color: '.$op_color.';">'.$op_price.'</td><td>'.$entryprice.'</td><td style="color: '.$target_color.';">'.$op_target.'</td><td>'.$view.'</td>';
+              
+              if(strcmp($chart, '') != 0){
+                  
+              //$data["premium"] .= '<td><center><a target="_blank" title="'.$symbol.'" class="btn" data-symbol="'.$symbol.'"><img width="24" height="24" src="https://img.icons8.com/color/48/candle-sticks.png" alt="candle-sticks"/></a></center></td>';
+              
+              }else{
+                $data["monthly"] .= '<td>No Data</td>';  
+              }
+              
+              /*
+              if(strcmp($hit, "True") == 0){
+                 $data["monthly"] .= '<td><img title="Target Hit" width="24" height="24" src="https://img.icons8.com/color/48/checked--v1.png" alt="checked--v1"/></td>'; 
+              }else if(strcmp($hit, "False") == 0){
+                 $data["monthly"] .= '<td><img title="Target Missed" width="24" height="24" src="https://img.icons8.com/external-others-agus-raharjo/64/external-incorrect-flat-website-ui-others-agus-raharjo.png" alt="external-incorrect-flat-website-ui-others-agus-raharjo"/></td>';
+              }else{
+                  $data["monthly"] .= '<td><img title="Target Pending" width="24" height="24" src="https://img.icons8.com/office/16/hourglass--v1.png" alt="hourglass--v1"/></td>';
+              }
+              */
+              
+              //$data["monthly"] .= '<td><button class="btn btn-primary btn-sm buy-btn" id="buy_'.$symbol.'" data-symbol="'.$symbol.'" data-recommend="'.$recommend.'" data-action="Buy">Buy</button></td><td><button class="btn btn-danger btn-sm sell-btn" id="sell_'.$symbol.'" data-symbol="'.$symbol.'" data-recommend="'.$recommend.'" data-action="Sell">Sell</button></td><td>'.$broker_name.'</td></tr>';
+              
+              $data["monthly"] .= '</tr>';
+              
+              // Advisors
+              
+              $data["manage"] .= '<tp><td style="color:'.$color.';">'.$symbol.'</td><td style="color:'.$color.';">'.$price.'</td><td style="color: '.$target_color.';">'.$target.'</td><td style="color: '.$signal_color.'">'.$signal.'</td><td>'.$recommend.'</td><td style="color: '.$op_color.';">'.$op_price.'</td><td>'.$entryprice.'</td><td style="color: '.$target_color.';">'.$op_target.'</td><td>'.$view.'</td>';
+              
+              if(strcmp($chart, '') != 0){
+                  
+              $data["manage"] .= '<td><center><a target="_blank" title="'.$symbol.'" href="/analysis/?symbol='.$symbol.'"><img width="24" height="24" src="https://img.icons8.com/color/48/candle-sticks.png" alt="candle-sticks"/></a></center></td>';
+              
+              }else{
+                $data["manage"] .= '<td>No Data</td>';  
+              }
+              
+              if(strcmp($hit, "True") == 0){
+                 $data["manage"] .= '<td><img title="Target Hit" width="24" height="24" src="https://img.icons8.com/color/48/checked--v1.png" alt="checked--v1"/></td>'; 
+              }else if(strcmp($hit, "False") == 0){
+                 $data["manage"] .= '<td><img title="Target Missed" width="24" height="24" src="https://img.icons8.com/external-others-agus-raharjo/64/external-incorrect-flat-website-ui-others-agus-raharjo.png" alt="external-incorrect-flat-website-ui-others-agus-raharjo"/></td>';
+              }else{
+                  $data["manage"] .= '<td><img title="Target Pending" width="24" height="24" src="https://img.icons8.com/office/16/hourglass--v1.png" alt="hourglass--v1"/></td>';
+              }
+              
+              $data["manage"] .= '<td><button class="btn btn-primary btn-sm edit-btn" id="edit_'.$symbol.'" data-symbol="'.$symbol.'" data-recommend="'.$recommend.'">Edit</button></td><td><button class="btn btn-danger btn-sm delete-btn" id="del_'.$symbol.'" data-symbol="'.$symbol.'" data-recommend="'.$recommend.'">Delete</button></td></tr>';
+            
+            }
+            
+            
+            #$data = $msg;
+            
+            
+            
+    }else{
+           $data["free"] .= "Analysis in Progress";
+           $data["premium"] .= "Analysis in Progress";
+           $data["monthly"] .= "Analysis in Progress";
+           $data["manage"] .= "Analysis in Progress";
+    }
+    
+    // Target Hits 
+    
+    $sql1 = "select * from stock where `Hit` like 'True' ORDER BY ID";
+    
+    $show_count1 = 3;
+    $show_counter1 = 0;
+    
+    $result1 = $con1->query($sql1);
+    
+    $hit_count = $result1->num_rows;
+    
+    if($result1->num_rows > 0){
+        while($row = $result1->fetch_assoc()){
+            $symbol = $row["Symbol"];
+            $price = $row["Price"];
+            $target = $row["Target"];
+            $signal = $row["Signal"];
+            $recommend = $row["Recommend"];
+            $op_price = $row["OptionPrice"];
+            $op_target = $row["OptionTarget"];
+            $view = $row["View"];
+            $chart = $row["Chart"];
+            $hit = $row["Hit"];
+            
+            $close = $row["Close"];
+            $open = $row["Open"];
+            
+            $option_close = $row["OptionClose"];
+            $option_open = $row["OptionOpen"];
+            
+            $broker = $row["Broker"];
+            $broker_name = $row["BrokerName"];
+            
+            if($price < $open){
+                $color = "#df514c";
+            }else{
+                $color = "#4caf50";
+            }
+            
+            if($op_price < $option_open){
+                $op_color = "#df514c";
+            }else{
+                $op_color = "#4caf50";
+            }
+            
+            if(strcmp($signal, "Buy") == 0){
+                $signal_color = "#4caf50";
+            }else{
+                $signal_color = "#df514c";
+            }
+            
+            $target_color = "#00b0ff";
+                
+                $data["hitcount"] = $hit_count; 
+                
+                //$data["free1"] .= '<tp><td style="color:'.$color.';">'.$symbol.'</td><td style="color:'.$color.';">'.$price.'</td><td style="color: '.$target_color.';">'.$target.'</td><td style="color: '.$signal_color.'">'.$signal.'</td><td>'.$recommend.'</td><td style="color: '.$op_color.';">'.$op_price.'</td><td style="color: '.$target_color.';">'.$op_target.'</td><td>'.$view.'</td>';
+                $data["free1"] .= '<tp><td style="color:'.$color.';">'.$symbol.'</td><td style="color: '.$target_color.';">'.$target.'</td><td style="color: '.$signal_color.'">'.$signal.'</td><td>'.$recommend.'</td><td style="color: '.$target_color.';">'.$op_target.'</td>';
+              
+              if(strcmp($chart, '') != 0){
+                  
+              //$data["free1"] .= '<td><a class="btn btn-primary btn-sm" href="https://rzp.io/l/3XQXcZv">Upgrade</a></td>';
+              
+              }else{
+                $data["free1"] .= '<td>No Data</td>';  
+              }
+              
+              if(strcmp($hit, "True") == 0){
+                 $data["free1"] .= '<td><img title="Target Hit" width="24" height="24" src="https://img.icons8.com/color/48/checked--v1.png" alt="checked--v1"/></td>'; 
+              }else if(strcmp($hit, "False") == 0){
+                 $data["free1"] .= '<td><img title="Target Missed" width="24" height="24" src="https://img.icons8.com/external-others-agus-raharjo/64/external-incorrect-flat-website-ui-others-agus-raharjo.png" alt="external-incorrect-flat-website-ui-others-agus-raharjo"/></td>';
+              }else{
+                  $data["free1"] .= '<td><img title="Target Pending" width="24" height="24" src="https://img.icons8.com/office/16/hourglass--v1.png" alt="hourglass--v1"/></td>';
+              }
+              
+              $data["free1"] .= '<td>'.$broker_name.'</td></tr>';
+            
+            // Premium Admin
+            
+            $data["premium1"] .= '<tp><td style="color:'.$color.';"><a target="_blank" title="'.$symbol.'" class="btn" data-symbol="'.$symbol.'" data-action="analysis" style="color:'.$color.';">'.$symbol.'</a></td><td style="color:'.$color.';">'.$price.'</td><td style="color: '.$target_color.';">'.$target.'</td><td style="color: '.$signal_color.'">'.$signal.'</td><td>'.$recommend.'</td><td style="color: '.$op_color.';">'.$op_price.'</td><td style="color: '.$target_color.';">'.$op_target.'</td><td>'.$view.'</td>';
+            //$data["premium1"] .= '<tp><td style="color:'.$color.';"><a target="_blank" title="'.$symbol.'" class="btn" data-symbol="'.$symbol.'" data-action="analysis" style="color:'.$color.';">'.$symbol.'</a></td><td style="color: '.$target_color.';">'.$target.'</td><td style="color: '.$signal_color.'">'.$signal.'</td><td>'.$recommend.'</td><td style="color: '.$target_color.';">'.$op_target.'</td>';
+              
+              if(strcmp($chart, '') != 0){
+                  
+              //$data["premium"] .= '<td><center><a target="_blank" title="'.$symbol.'" class="btn" data-symbol="'.$symbol.'"><img width="24" height="24" src="https://img.icons8.com/color/48/candle-sticks.png" alt="candle-sticks"/></a></center></td>';
+              
+              }else{
+                $data["premium1"] .= '<td>No Data</td>';  
+              }
+              
+              if(strcmp($hit, "True") == 0){
+                 $data["premium1"] .= '<td><img title="Target Hit" width="24" height="24" src="https://img.icons8.com/color/48/checked--v1.png" alt="checked--v1"/></td>'; 
+              }else if(strcmp($hit, "False") == 0){
+                 $data["premium1"] .= '<td><img title="Target Missed" width="24" height="24" src="https://img.icons8.com/external-others-agus-raharjo/64/external-incorrect-flat-website-ui-others-agus-raharjo.png" alt="external-incorrect-flat-website-ui-others-agus-raharjo"/></td>';
+              }else{
+                  $data["premium1"] .= '<td><img title="Target Pending" width="24" height="24" src="https://img.icons8.com/office/16/hourglass--v1.png" alt="hourglass--v1"/></td>';
+              }
+              
+              $data["premium1"] .= '<td><button class="btn btn-primary btn-sm buy-btn" id="buy_'.$symbol.'" data-symbol="'.$symbol.'" data-recommend="'.$recommend.'" data-action="Buy">Buy</button></td><td><button class="btn btn-danger btn-sm sell-btn" id="sell_'.$symbol.'" data-symbol="'.$symbol.'" data-recommend="'.$recommend.'" data-action="Sell">Sell</button></td><td>'.$broker_name.'</td></tr>';
+              
+              $data["premium1"] .= '</tr>';
+              
+              // Premium Users
+              
+              $data["monthly1"] .= '<tp><td style="color:'.$color.';"><a target="_blank" title="'.$symbol.'" class="btn" data-symbol="'.$symbol.'" data-action="analysis" style="color:'.$color.';">'.$symbol.'</a></td><td style="color:'.$color.';">'.$price.'</td><td style="color: '.$target_color.';">'.$target.'</td><td style="color: '.$signal_color.'">'.$signal.'</td><td>'.$recommend.'</td><td style="color: '.$op_color.';">'.$op_price.'</td><td style="color: '.$target_color.';">'.$op_target.'</td><td>'.$view.'</td>';
+            //$data["premium1"] .= '<tp><td style="color:'.$color.';"><a target="_blank" title="'.$symbol.'" class="btn" data-symbol="'.$symbol.'" data-action="analysis" style="color:'.$color.';">'.$symbol.'</a></td><td style="color: '.$target_color.';">'.$target.'</td><td style="color: '.$signal_color.'">'.$signal.'</td><td>'.$recommend.'</td><td style="color: '.$target_color.';">'.$op_target.'</td>';
+              
+              if(strcmp($chart, '') != 0){
+                  
+              //$data["premium"] .= '<td><center><a target="_blank" title="'.$symbol.'" class="btn" data-symbol="'.$symbol.'"><img width="24" height="24" src="https://img.icons8.com/color/48/candle-sticks.png" alt="candle-sticks"/></a></center></td>';
+              
+              }else{
+                $data["monthly1"] .= '<td>No Data</td>';  
+              }
+              
+              if(strcmp($hit, "True") == 0){
+                 $data["monthly1"] .= '<td><img title="Target Hit" width="24" height="24" src="https://img.icons8.com/color/48/checked--v1.png" alt="checked--v1"/></td>'; 
+              }else if(strcmp($hit, "False") == 0){
+                 $data["monthly1"] .= '<td><img title="Target Missed" width="24" height="24" src="https://img.icons8.com/external-others-agus-raharjo/64/external-incorrect-flat-website-ui-others-agus-raharjo.png" alt="external-incorrect-flat-website-ui-others-agus-raharjo"/></td>';
+              }else{
+                  $data["monthly1"] .= '<td><img title="Target Pending" width="24" height="24" src="https://img.icons8.com/office/16/hourglass--v1.png" alt="hourglass--v1"/></td>';
+              }
+              
+              //$data["monthly1"] .= '<td><button class="btn btn-primary btn-sm buy-btn" id="buy_'.$symbol.'" data-symbol="'.$symbol.'" data-recommend="'.$recommend.'" data-action="Buy">Buy</button></td><td><button class="btn btn-danger btn-sm sell-btn" id="sell_'.$symbol.'" data-symbol="'.$symbol.'" data-recommend="'.$recommend.'" data-action="Sell">Sell</button></td><td>'.$broker_name.'</td></tr>';
+              
+              $data["monthly1"] .= '</tr>';
+              
+              $data["manage1"] .= '<tp><td style="color:'.$color.';">'.$symbol.'</td><td style="color:'.$color.';">'.$price.'</td><td style="color: '.$target_color.';">'.$target.'</td><td style="color: '.$signal_color.'">'.$signal.'</td><td>'.$recommend.'</td><td style="color: '.$op_color.';">'.$op_price.'</td><td style="color: '.$target_color.';">'.$op_target.'</td><td>'.$view.'</td>';
+              
+              if(strcmp($chart, '') != 0){
+                  
+              $data["manage1"] .= '<td><center><a target="_blank" title="'.$symbol.'" href="/analysis/?symbol='.$symbol.'"><img width="24" height="24" src="https://img.icons8.com/color/48/candle-sticks.png" alt="candle-sticks"/></a></center></td>';
+              
+              }else{
+                $data["manage1"] .= '<td>No Data</td>';  
+              }
+              
+              if(strcmp($hit, "True") == 0){
+                 $data["manage1"] .= '<td><img title="Target Hit" width="24" height="24" src="https://img.icons8.com/color/48/checked--v1.png" alt="checked--v1"/></td>'; 
+              }else if(strcmp($hit, "False") == 0){
+                 $data["manage1"] .= '<td><img title="Target Missed" width="24" height="24" src="https://img.icons8.com/external-others-agus-raharjo/64/external-incorrect-flat-website-ui-others-agus-raharjo.png" alt="external-incorrect-flat-website-ui-others-agus-raharjo"/></td>';
+              }else{
+                  $data["manage1"] .= '<td><img title="Target Pending" width="24" height="24" src="https://img.icons8.com/office/16/hourglass--v1.png" alt="hourglass--v1"/></td>';
+              }
+              
+              $data["manage1"] .= '<td><button class="btn btn-primary btn-sm edit-btn" id="edit_'.$symbol.'" data-symbol="'.$symbol.'" data-recommend="'.$recommend.'">Edit</button></td><td><button class="btn btn-danger btn-sm delete-btn" id="del_'.$symbol.'" data-symbol="'.$symbol.'" data-recommend="'.$recommend.'">Delete</button></td></tr>';
+            
+            }
+            
+            
+            #$data = $msg;
+            
+            
+            
+    }else{
+           $data["free1"] .= "Analysis in Progress";
+           $data["premium1"] .= "Analysis in Progress";
+           $data["manage1"] .= "Analysis in Progress";
+    }
+    
+    // Handle Positions
+    
+    if(strcmp($username, "") != 0){
+        $username = $_SESSION["username"];
+        
+        $sql2 = "SELECT * from orders where `username` like '".$username."'";
+        $result2 = $con1->query($sql2);
+        $trades = array();
+        $symbol_names = array();
+        
+        if($result2->num_rows > 0){
+           
+           while($row = $result2->fetch_assoc()){
+               
+               // Buy Order, Sell Order, Buy Option Order, Sell Option Order
+               if(strcmp($row["Symbol"], "") != 0){
+                   $symbol = $row["Symbol"];
+                   $trades[$symbol]["name"] = $symbol;
+                   
+                   // Check if Buy Order or Sell Order
+                   if(strcmp($row["BuyStatus"], "True") == 0){
+                       $buy_qty = $row["BuyQty"];
+                       $buy_price = $row["BuyPrice"];
+                       
+                       $trades[$symbol]["Qty"] = $trades[$symbol]["Qty"] + $buy_qty;
+                       
+                       if($trades[$symbol]["BuyPrice"] > 0){
+                           $trades[$symbol]["BuyPrice"] = round(($trades[$symbol]["BuyPrice"] + $buy_price)/2, 2);
+                       }else{
+                           $trades[$symbol]["BuyPrice"] = round(($trades[$symbol]["BuyPrice"] + $buy_price), 2);
+                       }
+                       
+                       $trades[$symbol]["BuyBalance"] = $trades[$symbol]["BuyBalance"] + ($buy_qty * $buy_price);
+                       
+                   }else if(strcmp($row["SellStatus"], "True") == 0){
+                       $sell_qty = $row["SellQty"];
+                       $sell_price = $row["SellPrice"];
+                       
+                       $trades[$symbol]["Qty"] = $trades[$symbol]["Qty"] - $sell_qty;
+                       
+                       if($trades[$symbol]["SellPrice"] > 0){
+                           $trades[$symbol]["SellPrice"] = round(($trades[$symbol]["SellPrice"] + $sell_price)/2, 2);
+                       }else{
+                           $trades[$symbol]["SellPrice"] = round(($trades[$symbol]["SellPrice"] + $sell_price), 2);
+                       }
+                       
+                       $trades[$symbol]["SellBalance"] = $trades[$symbol]["SellBalance"] + ($sell_qty * $sell_price);
+                       
+                   }
+                   
+                   // Calculate Last Trade Price
+                   $sql3 = "SELECT * from stock where `Symbol` like '".$symbol."'";
+                   $result3 = $con1->query($sql3);
+                   if($result3->num_rows > 0){
+                       while($row = $result3->fetch_assoc()){
+                           $ltp = $row["Price"];
+                           $trades[$symbol]["ltp"] = $ltp;
+                       }
+                   }
+                   
+                   
+               }else if(strcmp($row["Recommend"], "") != 0){
+                   $symbol = $row["Recommend"];
+                   $trades[$symbol]["name"] = $symbol;
+                   
+                   // Check if Buy Order or Sell Order
+                   if(strcmp($row["BuyOpStatus"], "True") == 0){
+                       $buy_qty = $row["BuyOpQty"];
+                       $buy_price = $row["BuyOpPrice"];
+                       
+                       $trades[$symbol]["Qty"] = $trades[$symbol]["Qty"] + $buy_qty;
+                       
+                       if($trades[$symbol]["BuyPrice"] > 0){
+                           $trades[$symbol]["BuyPrice"] = round(($trades[$symbol]["BuyPrice"] + $buy_price)/2, 2);
+                       }else{
+                           $trades[$symbol]["BuyPrice"] = round(($trades[$symbol]["BuyPrice"] + $buy_price), 2);
+                       }
+                       
+                       $trades[$symbol]["BuyBalance"] = $trades[$symbol]["BuyBalance"] + ($buy_qty * $buy_price);
+                       
+                   }else if(strcmp($row["SellOpStatus"], "True") == 0){
+                       $sell_qty = $row["SellOpQty"];
+                       $sell_price = $row["SellOpPrice"];
+                       
+                       $trades[$symbol]["Qty"] = $trades[$symbol]["Qty"] - $sell_qty;
+                       if($trades[$symbol]["SellPrice"] > 0){
+                           $trades[$symbol]["SellPrice"] = round(($trades[$symbol]["SellPrice"] + $sell_price)/2, 2);
+                       }else{
+                           $trades[$symbol]["SellPrice"] = round(($trades[$symbol]["SellPrice"] + $sell_price), 2);
+                       }
+                       
+                       $trades[$symbol]["SellBalance"] = $trades[$symbol]["SellBalance"] + ($sell_qty * $sell_price);
+                       
+                   }
+                   
+                   // Calculate Last Trade Price
+                   $sql3 = "SELECT * from stock where `Recommend` like '".$symbol."'";
+                   $result3 = $con1->query($sql3);
+                   if($result3->num_rows > 0){
+                       while($row = $result3->fetch_assoc()){
+                           $ltp = $row["OptionPrice"];
+                           $trades[$symbol]["ltp"] = $ltp;
+                       }
+                   }
+                   
+               }
+               
+           }
+           
+           $total_pl = 0;
+           $trade_amount = 0;
+           
+           foreach($trades as $trade){
+               
+               if($trade["Qty"] == 0){
+                   $trade["PL"] = $trade["SellBalance"] - $trade["BuyBalance"];
+               }else if($trade["Qty"] > 0){
+                   $trade["PL"] = ($trade["ltp"] * $trade["Qty"]) - ($trade["BuyPrice"] * $trade["Qty"]);
+                   $trade_amount= $trade_amount + ($trade["BuyPrice"] * $trade["Qty"]);
+               }else if($trade["Qty"] < 0){
+                   $trade["PL"] = ($trade["ltp"] * $trade["Qty"]) - ($trade["SellPrice"] * $trade["Qty"]);
+                   $trade_amount = $trade_amount + ($trade["SellPrice"] * $trade["Qty"]);
+               }
+               
+               if($trade["PL"] > 0){
+                      $trade["color"] = "#4caf50"; 
+                    }else{
+                      $trade["color"] = "#df514c ";
+                    }
+               
+               $total_pl = $total_pl + $trade["PL"]; 
+               $data["orders"] .= '<tr><td style="color: '.$trade["color"].'">'.$trade["name"].'</td><td style="color: '.$trade["color"].'">'.$trade["ltp"].'</td><td style="color: '.$trade["color"].'">'.$trade["BuyPrice"].'</td><td style="color: '.$trade["color"].'">'.$trade["Qty"].'</td><td style="color: '.$trade["color"].'">'.$trade["PL"].'</td></tr>';
+           }
+           
+           if($total_pl > 0){
+                      $pl_color = "#4caf50"; 
+                    }else{
+                      $pl_color = "#df514c ";
+                    }
+           
+           $data["orders"] .= '<tr><td>Total (INR)</td><td></td><td></td><td></td><td style="color: '.$pl_color.';">'.$total_pl.'</td></tr>';
+           
+           $sql4 = "SELECT * from positions where Username like '".$username."'";
+           $result4 = $con1->query($sql4);
+           if($result4->num_rows > 0){
+               // Update 
+               $sql5 = "UPDATE positions SET `PL`='".$total_pl."', `Invested` = '".$trade_amount."' where Username like '".$username."'";
+               $result5 = $con1->query($sql5);
+               if($result5){
+                   // PL Updated
+               }else{
+                   // PL Failed
+               }
+           }else{
+               // Insert
+               $sql6 = "INSERT into positions (Username, PL, Invested) VALUES('".$username."', '".$total_pl."', '".$trade_amount."')";
+               $result6 = $con1->query($sql6);
+               if($result6->num_rows > 0){
+                   // Insert Success
+               }else{
+                   // Insert Failed
+               }
+           }
+            
+        }else{
+            $data["orders"] .= '<tp><td>No Open Positions</td>';
+        }
+    }else{
+        
+    } 
+    
+    // Handle OI Change Stocks
+    $sql7 = "SELECT * from plots Group By symbol ORDER BY ID DESC";
+    $result7 = $con1->query($sql7);
+    if($result7->num_rows > 0){
+        while($row = $result7->fetch_assoc()){
+            $symbol = $row["symbol"];
+            $image_data = $row["plot"];
+            $base64_image = base64_encode($image_data);
+            $date = $row["date"];
+            
+            $data["plots"] .= '<div class="col-md-6 mb-4">
+                                <h4 class="text-center">'.$symbol.'</h4>
+                                <img src="data:image/png;base64,' . $base64_image . '" alt="'.$symbol.'" class="img-fluid">
+                                <p class="text-center">Last Updated: '.$date.'</p>
+                                </div>';
+        }
+    }else{
+            $data["plots"] = '<div class="col-md-6 mb-4">
+                                <h4 class="text-center">Analysis in Progress ...</h4>
+                                </div>';
+    }
+    
+    // Handle News
+    
+    //$sql9 = "SELECT * FROM `tweets` WHERE 1 ORDER BY `created_at` DESC limit 10";
+    $sql9 = "SELECT * FROM `tweets` WHERE 1 ORDER BY `url` DESC limit 10";
+    $result9 = $con1->query($sql9);
+    
+    $news_data = "";
+    
+    if($result9->num_rows > 0){
+        while($row = $result9->fetch_assoc()){
+            $symbol = $row["symbol"];
+            $news = $row["news"];
+            $timestamp = $row["created_at"];
+            $url = $row["url"];
+            
+            $fromTimezone = new DateTimeZone('UTC'); // Assuming the input timestamp is in UTC
+            $toTimezone = new DateTimeZone('Asia/Kolkata'); // IST (Indian Standard Time) Timezone
+            
+            // Create a DateTime object from the input timestamp and set the input timezone
+            $datetime = new DateTime($timestamp, $fromTimezone);
+            
+            // Convert the DateTime to the IST timezone
+            $datetime->setTimezone($toTimezone);
+            
+            // Format the DateTime object as per your desired format
+            $formattedDate = $datetime->format('j M Y \a\t g:i A');
+            
+            //echo $formattedDate; // Output: 10 Sep 2023 at 4:08 AM
+            
+            $news_data .= "<tr><td>".$formattedDate."</td><td>".$symbol."</td><td>".$news.". <a target='_blank' href='".$url."'>Read More</a></td></tr>";
+        }
+        
+        $data["tweets"] = $news_data;
+        
+        
+    }else{
+            $data["tweets"] = "Searching News";
+    }
+    
+    
+    $data = json_encode($data);
+
+    // Send the data to the client as an SSE event
+    echo "data: $data\n\n";
+
+    // Flush the output buffer to ensure real-time updates
+    
+    ob_flush();
+    flush();
+    
+
+    // Sleep for 1 second before sending the next update
+    sleep(1);
+}

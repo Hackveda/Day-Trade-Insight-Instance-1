@@ -1,0 +1,112 @@
+/* Add your custom styles here */
+
+/* Hero Section */
+.hero-section {
+  background-color: #007bff; /* Blue color for stock market */
+  color: #ffffff;
+}
+
+/* Features Section */
+.features-section {
+  background-color: #f8f9fa; /* Light gray background for features */
+}
+
+.feature-box {
+  padding: 30px;
+  border: 1px solid #e9ecef; /* Light gray border for feature boxes */
+}
+
+/* Footer Section */
+.footer-section {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Features Section */
+.features-section {
+  background-color: #f8f9fa; /* Light gray background for features */
+  color: #000000; /* Black text color */
+  padding-bottom: 40px;
+}
+
+/* Table Styling */
+.table {
+  font-size: 16px;
+}
+
+.table thead th {
+  vertical-align: middle;
+}
+
+/* Remove footer */
+.footer-section {
+  display: none;
+}
+
+/* Custom CSS for Mobile Screens */
+@media (max-width: 767.98px) {
+  .navbar-brand {
+    font-size: 24px;
+  }
+
+  .hero-section {
+    padding: 40px 0;
+  }
+
+  .hero-section h1 {
+    font-size: 36px;
+  }
+
+  .hero-section p {
+    font-size: 18px;
+  }
+
+  .btn-lg {
+    font-size: 18px;
+    padding: 12px 20px;
+  }
+
+  .features-section {
+    padding-top: 20px;
+  }
+
+  .features-section h2 {
+    font-size: 28px;
+  }
+
+  .table {
+    font-size: 14px;
+  }
+}
+
+/* Premium Signup Section */
+.premium-signup-section {
+  color: #000000; /* Black text color */
+}
+
+.premium-signup-section h2 {
+  font-size: 28px;
+}
+
+.premium-signup-section .table {
+  font-size: 16px;
+}
+
+.premium-signup-section .table th {
+  vertical-align: middle;
+}
+
+/* Disclaimer Section */
+.disclaimer-section {
+  color: #000000; /* Black text color */
+}
+
+.disclaimer-section h2 {
+  font-size: 28px;
+}
+
+.disclaimer-section p {
+  font-size: 16px;
+  margin-bottom: 16px;
+}

@@ -1,0 +1,110 @@
+[13-Apr-2024 18:07:06 Asia/Kolkata] PHP Warning:  Undefined variable $conn in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:07:06 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/cdmgjszfqfe3/public_html/webinar/register.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:07:11 Asia/Kolkata] PHP Warning:  Undefined variable $conn in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:07:11 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/cdmgjszfqfe3/public_html/webinar/register.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:07:23 Asia/Kolkata] PHP Warning:  Undefined variable $conn in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:07:23 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/cdmgjszfqfe3/public_html/webinar/register.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:07:24 Asia/Kolkata] PHP Warning:  Undefined variable $conn in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:07:24 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/cdmgjszfqfe3/public_html/webinar/register.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:07:24 Asia/Kolkata] PHP Warning:  Undefined variable $conn in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:07:24 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/cdmgjszfqfe3/public_html/webinar/register.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:07:25 Asia/Kolkata] PHP Warning:  Undefined variable $conn in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:07:25 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/cdmgjszfqfe3/public_html/webinar/register.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:07:25 Asia/Kolkata] PHP Warning:  Undefined variable $conn in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:07:25 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/cdmgjszfqfe3/public_html/webinar/register.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:07:25 Asia/Kolkata] PHP Warning:  Undefined variable $conn in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:07:25 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/cdmgjszfqfe3/public_html/webinar/register.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:07:25 Asia/Kolkata] PHP Warning:  Undefined variable $conn in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:07:25 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/cdmgjszfqfe3/public_html/webinar/register.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:08:54 Asia/Kolkata] PHP Warning:  Undefined variable $conn in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:08:54 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/cdmgjszfqfe3/public_html/webinar/register.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:08:55 Asia/Kolkata] PHP Warning:  Undefined variable $conn in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:08:55 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/cdmgjszfqfe3/public_html/webinar/register.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:08:55 Asia/Kolkata] PHP Warning:  Undefined variable $conn in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:08:55 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/cdmgjszfqfe3/public_html/webinar/register.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:08:55 Asia/Kolkata] PHP Warning:  Undefined variable $conn in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:08:55 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/cdmgjszfqfe3/public_html/webinar/register.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:08:55 Asia/Kolkata] PHP Warning:  Undefined variable $conn in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:08:55 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/cdmgjszfqfe3/public_html/webinar/register.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:08:55 Asia/Kolkata] PHP Warning:  Undefined variable $conn in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:08:55 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/cdmgjszfqfe3/public_html/webinar/register.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:08:56 Asia/Kolkata] PHP Warning:  Undefined variable $conn in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:08:56 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/cdmgjszfqfe3/public_html/webinar/register.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:08:56 Asia/Kolkata] PHP Warning:  Undefined variable $conn in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:08:56 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/cdmgjszfqfe3/public_html/webinar/register.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:08:56 Asia/Kolkata] PHP Warning:  Undefined variable $conn in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:08:56 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/cdmgjszfqfe3/public_html/webinar/register.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:08:56 Asia/Kolkata] PHP Warning:  Undefined variable $conn in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:08:56 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/cdmgjszfqfe3/public_html/webinar/register.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:08:56 Asia/Kolkata] PHP Warning:  Undefined variable $conn in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:08:56 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/cdmgjszfqfe3/public_html/webinar/register.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:08:56 Asia/Kolkata] PHP Warning:  Undefined variable $conn in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:08:56 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/cdmgjszfqfe3/public_html/webinar/register.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:08:57 Asia/Kolkata] PHP Warning:  Undefined variable $conn in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10
+[13-Apr-2024 18:08:57 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/cdmgjszfqfe3/public_html/webinar/register.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/cdmgjszfqfe3/public_html/webinar/register.php on line 10

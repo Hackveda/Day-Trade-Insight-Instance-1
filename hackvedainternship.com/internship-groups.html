@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Internship Groups - Hackveda Internship Social Network</title>
+  <style>
+    /* CSS Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: #4354A3;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .menu {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .menu li {
+      margin: 0 10px;
+    }
+
+    .menu li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #333;
+      margin-top: 0;
+    }
+
+    p {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .group-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .group-list li {
+      margin-bottom: 20px;
+      padding: 20px;
+      background-color: #f7f7f7;
+      border-radius: 4px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .group-list li h3 {
+      font-size: 20px;
+      color: #333;
+      margin: 0;
+    }
+
+    .group-list li p {
+      font-size: 14px;
+      color: #666;
+      margin: 10px 0;
+    }
+
+    .group-list li span {
+      font-weight: bold;
+    }
+
+    .group-list li button {
+      padding: 10px 20px;
+      background-color: #4354A3;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .group-list li button:hover {
+      background-color: #2E3C78;
+    }
+
+    .pagination {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .pagination a {
+      padding: 5px 10px;
+      margin: 0 5px;
+      background-color: #4354A3;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .pagination a:hover {
+      background-color: #2E3C78;
+    }
+
+    .footer {
+      background-color: #4354A3;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <img src="https://hackveda.in/i/HackvedaLogo1.png" height=50 alt="Hackveda Internship Social Network">
+    <nav>
+      <ul class="menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Internships</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Resources</a></li>
+        <li><a href="#">Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Internship Groups</h1>
+    <p>Discover and join internship groups to connect with fellow interns.</p>
+
+    <ul class="group-list">
+      <li>
+        <h3>Web Development Interns</h3>
+        <p>A group for interns interested in web development. Join to discuss projects, share resources, and learn together.</p>
+        <p><span>Members:</span> 50</p>
+        <button>Join Group</button>
+      </li>
+
+      <li>
+        <h3>Data Science Internship Program</h3>
+        <p>A group for interns focusing on data science and analytics. Connect with peers, discuss data projects, and explore data-driven insights.</p>
+        <p><span>Members:</span> 35</p>
+        <button>Join Group</button>
+      </li>
+
+      <!-- Add more group listings as needed -->
+
+    </ul>
+
+    <div class="pagination">
+      <a href="#">Previous</a>
+      <a href="#">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">Next</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2023 Hackveda Internship Social Network. All rights reserved.</p>
+  </footer>
+</body>
+</html>

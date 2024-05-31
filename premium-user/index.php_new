@@ -1,0 +1,222 @@
+<?php
+session_start();
+include("../db.php");
+if(isset($_SESSION["username"])){
+    // Do nothing
+    $username = $_SESSION["username"];
+    $sql = "SELECT Name, Status from login where Username like '%".$username."%'";
+    $result = $con1->query($sql);
+    if($result->num_rows > 0){
+        while($row = $result->fetch_assoc()){
+            $status = $row["Status"];
+            $name = $row["Name"];
+        }
+    }
+    
+    session_write_close();
+}else{
+    header("Location: ../index.php");
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><?php echo $username; ?> | Premium User Dashboard</title>
+  <!-- Add Bootstrap CSS link here -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Add your custom CSS link here -->
+  <link rel="stylesheet" href="styles.css">
+  <style>
+      
+      .latest-reports .container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.section-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 15px;
+}
+
+.report-item {
+  margin-bottom: 30px;
+}
+
+.report-card {
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  transition: box-shadow .3s ease;
+}
+
+.report-card img {
+  width: 100%;
+  height: auto;
+}
+
+.report-content {
+  padding: 15px;
+}
+
+.report-date {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.report-title {
+  display: block;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.report-link {
+  display: inline-block;
+  background: #007bff;
+  color: #fff;
+  padding: 5px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.all-reports-link {
+  display: inline-block;
+  background: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.signal {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.signal.buy {
+  background-color: #4CAF50; /* Green */
+}
+
+.signal.sell {
+  background-color: #F44336; /* Red */
+}
+
+.signal.hold {
+  background-color: #FFEB3B; /* Yellow */
+  color: #333; /* Dark text color for better contrast */
+}
+
+
+@media (max-width: 768px) {
+  .report-item {
+    margin-bottom: 20px;
+  }
+  .report-content {
+    padding: 10px;
+  }
+}
+
+      
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="#"><?php echo $name; ?> | Premium Dashboard</a>
+    <!-- Add your navigation links here -->
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/premium-user">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout.php">Logout</a>
+      </li>
+    </ul>
+  </nav>
+  
+  
+ <!-- Latest Reports Section -->
+<div class="latest-reports">
+  <div class="container py-4">
+    <h2 class="section-title">Latest Market Reports</h2>
+    <!-- Carousel and items -->
+    <div class="carousel-inner" role="listbox">
+      <!-- Carousel Item -->
+      <div class="carousel-item active">
+        <div class="row">
+            
+          <!-- Report Items -->
+          <div class="report-item col-12 col-md-6 col-lg-3">
+          <div class="report-card">
+            <img src="https://img.etimg.com/thumb/width-1200,height-900,imgsize-504063,resizemode-75,msid-73601526/markets/stocks/news/bank-of-baroda-tumbles-into-red-with-rs-1407-cr-net-loss-on-higher-provisions.jpg" alt="Bank of Baroda Report">
+            <div class="report-content">
+              <div class="report-date">31 March 2024</div>
+              <a class="report-title" href="">Bank of Baroda</a>
+              <!-- Buy/Sell/Hold Signal -->
+              <a class="report-link" href="">Read More</a>
+            </div>
+          </div>
+        </div>
+
+        
+          <!-- Additional report items repeat the structure above -->
+          
+          
+        </div>
+      </div>
+      <!-- Additional carousel items would follow here... -->
+    </div>
+    <div class="text-center">
+      <a href="#" class="all-reports-link">SEE ALL REPORTS</a>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Add Bootstrap JS and jQuery scripts here -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+<script>
+        
+</script>
+
+<script>
+        
+</script>
+
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/58e08d0bf7bbaa72709c3b48/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+
+<script type="text/javascript">
+  window._mfq = window._mfq || [];
+  (function() {
+    var mf = document.createElement("script");
+    mf.type = "text/javascript"; mf.defer = true;
+    mf.src = "//cdn.mouseflow.com/projects/d09b3e74-b799-46c7-b56b-2cd4b0c94b69.js";
+    document.getElementsByTagName("head")[0].appendChild(mf);
+  })();
+</script>
+
+</html>
